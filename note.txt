@@ -1,0 +1,17 @@
+BaseImage: Specifies the starting point, like FROM ubuntu:20.04, which defines the operating system or environment.
+Commands: Instructions like COPY, RUN, ADD, or CMD to copy files, install dependencies, or define the default command to run when the container starts.
+Configuration: Settings for environment variables (ENV), working directories (WORKDIR), or exposed ports (EXPOSE).
+
+
+FROM node:14
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["node", "app.js"]
+
+Container: A lightweight, portable unit that runs your app and its dependencies. Think of it like a sealed box with your app and everything it needs to work, isolated from the host system.
+Image: A read-only template used to create containers. It’s like a snapshot of an app’s setup, including the code, runtime, and libraries. For example, a Node.js image has Node.js pre-installed.
+Dockerfile: A text file with instructions to build an image. It defines what goes into the image, like the base system, files to copy, and commands to run. (See the previous example for a simple Dockerfile.)
+Docker Engine: The software that runs Docker. It builds images, creates containers, and manages them on your computer or server.
